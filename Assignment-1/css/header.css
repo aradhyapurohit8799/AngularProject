@@ -1,0 +1,25 @@
+#header {
+    border: 5px darkcyan solid;
+    border-radius: 20px;
+    background: url("/images/header.jpg") no-repeat center center/cover;
+    padding: 2px;
+}
+
+#company-logo {
+    height: 50px;
+    width: 100px;
+    border: 5px darkcyan solid;
+    border-radius: 30px;
+    position: relative;
+
+}
+
+#profile-icon {
+    height: 40px;
+    width: 40px;
+    border: 5px purple solid;
+    border-radius: 30px;
+    position: absolute;
+    right: 20px;
+
+}
