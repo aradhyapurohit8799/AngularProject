@@ -32,20 +32,61 @@
 
 }
 
-@media screen and (max-width: 700px) {
+@media screen and (max-width: 900px) {
     .data {
         display: block;
-        /* max-width: 2000px; */
-        width: fit-content;
+        width: 100%;
         height: fit-content;
         justify-content: center;
         justify-items: center;
         align-items: center;
         box-sizing: border-box;
-
-
     }
 
+    .data .total-sales {
+        display: block;
+        color: darkblue;
+        border: darkblue 5px solid;
+        width: 100%;
+        border-radius: 20px;
+        text-align: center;
+        padding: 1px;
+        margin: 10px;
+        background-color: lightblue;
+        justify-content: center;
+        justify-items: center;
+        align-items: center;
+        box-sizing: border-box;
+    }
+
+    .data .cust-visited {
+        color: darkcyan;
+        border: darkcyan 5px solid;
+        width: 100%;
+        border-radius: 20px;
+        text-align: center;
+        padding: 1px;
+        margin: 10px;
+        background-color: cyan justify-content: center;
+        justify-items: center;
+        align-items: center;
+        box-sizing: border-box;
+    }
+
+    .data .Avg-amnt {
+        color: lightblue;
+        border: lightblue 5px solid;
+        width: 100%;
+        border-radius: 20px;
+        text-align: center;
+        padding: 1px;
+        margin: 10px;
+        background-color: darkblue;
+        justify-content: center;
+        justify-items: center;
+        align-items: center;
+        box-sizing: border-box;
+    }
 }
 
 .data a {
