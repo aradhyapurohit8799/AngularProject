@@ -26,32 +26,6 @@ class TotalSales(Resource):
             return item.json()
         return {"message": "Item not found"}, 400
 
-    # def post(self, name):
-    #     if TotalSalesModel.find_by_name(name):
-    #         return {
-    #             "message": "an item with the name {} already exists".format(
-    #                 name
-    #             )
-    #         }, 400
-    #     data = TotalSales.parser.parse_args()
-    #     item = TotalSalesModel(
-    #         {"name": name, "name": "Total Sales", "value": data["value"]}
-    #     )
-
-    #     try:
-    #         item.save_to_db()
-
-    #     except:
-    #         return {"message": "an error occured inserting the item"}, 500
-
-    #     return item.json(), 201
-
-    # def delete(self, name):
-    #     item = TotalSalesModel.find_by_name(name)
-    #     if item:
-    #         item.delete_from_db()
-    #     return {"message": "Item deleted"}
-
     def put(self, name):
         data = TotalSales.parser.parse_args()
 
