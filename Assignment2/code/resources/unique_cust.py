@@ -26,30 +26,6 @@ class UniqueCust(Resource):
             return item.json()
         return {"message": "Item not found"}, 400
 
-    # def post(self, name):
-    #     if UniqueCustModel.find_by_name(name):
-    #         return {
-    #             "message": "an item with the name {} already exists".format(
-    #                 name
-    #             )
-    #         }, 400
-    #     data = UniqueCust.parser.parse_args()
-    #     item = UniqueCustModel(data["value"])
-
-    #     try:
-    #         item.save_to_db()
-
-    #     except:
-    #         return {"message": "an error occured inserting the item"}, 500
-
-    #     return item.json(), 201
-
-    # def delete(self, name):
-    #     item = UniqueCustModel.find_by_name(name)
-    #     if item:
-    #         item.delete_from_db()
-    #     return {"message": "Item deleted"}
-
     def put(self, name):
         data = UniqueCust.parser.parse_args()
 
