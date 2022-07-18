@@ -2,11 +2,12 @@ from flask import Flask
 from flask_jwt import JWT
 from flask_restful import Api
 
-from resources.avg_sales import AvgSales
-from resources.daily_sales import DailySales
-from resources.daily_sales import ItemList
-from resources.total_sales import TotalSales
-from resources.unique_cust import UniqueCust
+from resources.products import DailySales
+from resources.products import ItemList
+from resources.sales import TotalSales
+from resources.sales import averagesales
+from resources.sales import totalsalesvalue
+from resources.sales import uniquecustomer
 from resources.user import UserRegister
 from security import authenticate
 from security import identity
@@ -26,11 +27,12 @@ def create_table():
 jwt = JWT(app, authenticate, identity)  # /auth
 
 
-api.add_resource(DailySales, "/Daily Sales/<int:pid>")
+api.add_resource(DailySales, "/Daily Sales/<string:product_id>")
+api.add_resource(totalsalesvalue, "/Total Sales Value")
+api.add_resource(uniquecustomer, "/Unique")
+api.add_resource(averagesales, "/AVG")
 api.add_resource(ItemList, "/Daily Sales")
-api.add_resource(TotalSales, "/total sales/<string:name>")
-api.add_resource(AvgSales, "/avg sales/<string:name>")
-api.add_resource(UniqueCust, "/unique cust/<string:name>")
+api.add_resource(TotalSales, "/total sales/<int:userid>")
 api.add_resource(UserRegister, "/register")
 
 if __name__ == "__main__":
