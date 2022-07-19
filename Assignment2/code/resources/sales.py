@@ -1,4 +1,3 @@
-import sqlite3
 from datetime import date
 
 from flask_jwt import jwt_required
@@ -62,50 +61,24 @@ class TotalSales(Resource):
 
 class totalsalesvalue(Resource):
     def get(self):
-        connection = sqlite3.connect("data.db")
-        cursor = connection.cursor()
-
-        query = (
-            "SELECT SUM(sales_amount) FROM sales WHERE sales_date == DATE();"
-        )
-        result = cursor.execute(query)
-        row = result.fetchone()
-        connection.close()
-        if row:
-            return {"total sales": row[0]}
+        return {
+            "Total Sales": sum(
+                TotalSalesModel.find_by_date(str(date.today()))[0]
+            )
+        }
 
 
 class uniquecustomer(Resource):
     def get(self):
-        connection = sqlite3.connect("data.db")
-        cursor = connection.cursor()
-        query = "SELECT COUNT (DISTINCT(userid)) FROM sales WHERE sales_date == DATE();"
-        result = cursor.execute(query)
-        row = result.fetchone()
-        connection.close()
-        if row:
-            return {"unique": row[0]}
+        return {
+            "unique cutomers": len(
+                TotalSalesModel.find_by_date(str(date.today()))[1]
+            )
+        }
 
 
 class averagesales(Resource):
     def get(self):
-        connection = sqlite3.connect("data.db")
-        cursor = connection.cursor()
-        query1 = (
-            "SELECT SUM(sales_amount) FROM sales WHERE sales_date == DATE();"
-        )
-        result1 = cursor.execute(query1)
-        row1 = result1.fetchone()
-
-        query2 = "SELECT COUNT (DISTINCT(userid)) FROM sales WHERE sales_date == DATE();"
-        result2 = cursor.execute(query2)
-        row2 = result2.fetchone()
-
-        print(row1[0])
-        print(row2[0])
-
-        print(date.today())
-
-        connection.close()
-        if row1 and row2:
-            return {"average customers": row1[0] / row2[0]}
+        total_amnt = sum(TotalSalesModel.find_by_date(str(date.today()))[0])
+        unique_cust = len(TotalSalesModel.find_by_date(str(date.today()))[1])
+        return {"Average Sales": total_amnt / unique_cust}

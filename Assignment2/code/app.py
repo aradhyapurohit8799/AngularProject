@@ -35,6 +35,7 @@ api.add_resource(ItemList, "/Daily Sales")
 api.add_resource(TotalSales, "/total sales/<int:userid>")
 api.add_resource(UserRegister, "/register")
 
+
 if __name__ == "__main__":
     from db import db
 

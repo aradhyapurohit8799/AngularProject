@@ -31,6 +31,26 @@ class TotalSalesModel(db.Model):
         }
 
     @classmethod
+    def find_by_date(cls, sales_date):
+
+        mainlist = []
+
+        mylist = []
+        list2 = cls.query.filter_by(sales_date=sales_date).all()
+
+        for item in list2:
+            mylist.append(item.sales_amount)
+
+        myset = set()
+        for item in list2:
+            myset.add(item.userid)
+
+        mainlist.append(mylist)
+        mainlist.append(myset)
+
+        return mainlist
+
+    @classmethod
     def find_by_userid(cls, userid):
         return cls.query.filter_by(userid=userid).first()
 
