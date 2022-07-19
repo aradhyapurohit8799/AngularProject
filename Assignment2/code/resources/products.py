@@ -1,16 +1,20 @@
 from flask_jwt import jwt_required
 from flask_restful import Resource
 from flask_restful import reqparse
-from models.daily_sales import DailySalesModel
+from models.products import DailySalesModel
 
 
 class DailySales(Resource):
     parser = reqparse.RequestParser()
     parser.add_argument(
-        "pid",
+        "id",
         type=int,
-        required=True,
-        help="pid field cannot be left blank",
+        help="id field cannot be left blank",
+    )
+    parser.add_argument(
+        "product_id",
+        type=str,
+        help="product_id field cannot be left blank",
     )
     parser.add_argument(
         "description",
@@ -18,40 +22,23 @@ class DailySales(Resource):
         required=True,
         help="description field cannot be left blank",
     )
-    parser.add_argument(
-        "salesamount",
-        type=str,
-        required=True,
-        help="sales amount field cannot be left blank",
-    )
-    parser.add_argument(
-        "profitpercent",
-        type=float,
-        required=True,
-        help="profit percent field cannot be left blank",
-    )
 
     @jwt_required()
-    def get(self, pid):
-        item = DailySalesModel.find_by_pid(pid)
+    def get(self, product_id):
+        item = DailySalesModel.find_by_product_id(product_id)
         if item:
             return item.json()
         return {"message": "Item not found"}, 400
 
-    def post(self, pid):
-        if DailySalesModel.find_by_pid(pid):
+    def post(self, product_id):
+        if DailySalesModel.find_by_product_id(product_id):
             return {
                 "message": "an item with the name {} already exists".format(
-                    pid
+                    product_id
                 )
             }, 400
         data = DailySales.parser.parse_args()
-        item = DailySalesModel(
-            data["pid"],
-            data["description"],
-            data["salesamount"],
-            data["profitpercent"],
-        )
+        item = DailySalesModel(data["id"], product_id, data["description"])
 
         try:
             item.save_to_db()
@@ -61,27 +48,26 @@ class DailySales(Resource):
 
         return item.json(), 201
 
-    def delete(self, pid):
-        item = DailySalesModel.find_by_pid(pid)
+    def delete(self, product_id):
+        item = DailySalesModel.find_by_product_id(product_id)
         if item:
             item.delete_from_db()
         return {"message": "Item deleted"}
 
-    def put(self, pid):
+    def put(self, product_id):
         data = DailySales.parser.parse_args()
 
-        item = DailySalesModel.find_by_pid(pid)
+        item = DailySalesModel.find_by_product_id(product_id)
         if item is None:
             item = DailySalesModel(
-                data["pid"],
+                data["id"],
+                data["product_id"],
                 data["description"],
-                data["salesamount"],
-                data["profitpercent"],
             )
         else:
+            data["id"],
+            item.product_id = data["product_id"]
             item.description = data["description"]
-            item.salesamount = data["salesamount"]
-            item.profitpercent = data["profitpercent"]
 
         item.save_to_db()
         return item.json()
