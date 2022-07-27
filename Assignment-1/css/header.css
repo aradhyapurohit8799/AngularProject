@@ -1,7 +1,7 @@
 #header {
     border: 5px darkcyan solid;
     border-radius: 20px;
-    background: url("/images/header.jpg") no-repeat center center/cover;
+    background: url("../images/header.jpg") no-repeat center center/cover;
     padding: 2px;
 }
 

@@ -1,5 +1,5 @@
 .dashboard {
-    background: url("/images/dashboard_Background.jpg") no-repeat center center/cover;
+    background: url("../images/dashboard_Background.jpg") no-repeat center center/cover;
     /* background-color: floralwhite; */
     border-radius: 20px;
     margin: none;
@@ -67,7 +67,8 @@
         text-align: center;
         padding: 1px;
         margin: 10px;
-        background-color: cyan justify-content: center;
+        background-color: csyan;
+        justify-content: center;
         justify-items: center;
         align-items: center;
         box-sizing: border-box;

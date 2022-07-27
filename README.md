@@ -9,3 +9,10 @@
     "source venv/bin/activate"
 2. To run the flask app, type the following command on ubuntu wsl prompt inside code folder of Assignment 2 folder:
     "python app.py"
+
+## Database creation
+1. create dataset using postman
+
+## Login In (secret credentials)
+1. Enter username as "AP8799"
+2. Enter password as "asdf"
