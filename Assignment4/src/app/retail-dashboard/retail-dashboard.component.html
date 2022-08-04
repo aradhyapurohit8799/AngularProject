@@ -1,0 +1,64 @@
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Art Apperel | Aradhya Purohit</title>
+    <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet" />
+    <link rel="stylesheet" href="./retail-dashboard.component.css">
+</head>
+
+<body>
+    <div id="header" class="extremes">
+        <p><a href=""> <img id="company-logo" src="../../assets/images/v1057-logo-28.jpg" alt="Company logo"> </a>
+            <a href=""> <img id="profile-icon" src="../../assets/images/profile-icon.jpg" alt="Profile Icon"> </a>
+        </p>
+    </div>
+    <div id="main" class="container">
+        <div class="dashboard">
+            <p id="db"><img src="../../assets/images/Dashboard.png" alt="Dashboard"> Dashboard</p>
+            <div class="data">
+                <div class="total-sales">
+                    <h3>Total Sales</h3>
+                    <a href="" id="value1">{{totalSales | currency: 'INR'}}</a>
+
+                </div>
+                <div class="cust-visited">
+                    <h3>Daily customer</h3>
+                    <a href="" id="value2">{{uniqueCustomer}}</a>
+                </div>
+                <div class="Avg-amnt">
+                    <h3>Average Expenditure</h3>
+                    <a href="" id="value3">{{averageSales | currency: 'INR'}}</a>
+                </div>
+            </div>
+
+            <div class="prod-tab">
+                <h2>Product List</h2>
+                <div class="table">
+                    <table>
+                        <thead class="Tab-head">
+                            <tr>
+                                <th>ID</th>
+                                <th>User ID</th>
+                                <th>Product ID</th>
+                                <th>Sales Amount</th>
+                                <th>Sales Date</th>
+                            </tr>
+                        </thead>
+
+                        <tbody class="value4">
+                            <tr *ngFor="let entry of dailySales">
+                                <td>{{entry.id}}</td>
+                                <td>{{entry.userid}}</td>
+                                <td>{{entry.product_id}}</td>
+                                <td>{{entry.sales_amount | currency: 'INR'}}</td>
+                                <td>{{entry.sales_date}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
