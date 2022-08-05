@@ -16,3 +16,7 @@
 ## Login In (secret credentials)
 1. Enter username as "AP8799"
 2. Enter password as "asdf"
+
+## Angular App
+1. Open the Assignment4 folder and type in the following command on your prompt (Make sure to have Backend server running and all the required libraries and framework installed):
+    "ng serve"

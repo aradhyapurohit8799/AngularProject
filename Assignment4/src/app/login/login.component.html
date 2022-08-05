@@ -1,0 +1,39 @@
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Art Apperel | Aradhya Purohit</title>
+    <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="./login.component.css">
+</head>
+
+<body>
+    <div id="main-login">
+        <div id="container-login" *ngIf="hide ; else error">
+            <div class="form-wrap">
+                <h1>Log in</h1>
+                <form>
+                    <div class="form-group">
+                        <label for="username">User Name</label>
+                        <input type="text" name="username" id="username" #username />
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <input type="password" name="password" id="password" #password />
+                    </div>
+                    <button type="submit" class="btn" name="button" action="./index.html"
+                        (click)="OnLogin(username.value, password.value)">Log
+                        In</button>
+                </form>
+            </div>
+        </div>
+        <div>
+            <ng-template #error>
+                <h1> Authentication Failed ! </h1>
+                <p>Please refresh the page and re-enter the credentials</p>
+            </ng-template>
+        </div>
+    </div>
+</body>
