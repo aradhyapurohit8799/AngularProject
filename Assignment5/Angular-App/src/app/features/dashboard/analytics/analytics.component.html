@@ -1,0 +1,239 @@
+<div class="flex flex-col flex-auto w-full">
+  <div class="flex flex-wrap w-full max-w-screen-xl mx-auto p-6 md:p-8">
+    <!-- Title and action buttons -->
+    <div class="flex items-center justify-between w-full">
+      <div>
+        <div
+          class="text-3xl text-gray-500 font-semibold tracking-tight leading-8">
+          Analytics dashboard
+        </div>
+        <div class="font-medium tracking-tight text-gray-500">
+          Monitor metrics, check reports and review performance
+        </div>
+      </div>
+      <div class="flex items-center ml-6">
+        <button
+          class="hidden sm:inline-flex"
+          mat-flat-button
+          [color]="'accent'">
+          <mat-icon class="icon-size-5">settings</mat-icon>
+          <span class="ml-2">Settings</span>
+        </button>
+        <button
+          class="hidden sm:inline-flex ml-3"
+          mat-flat-button
+          [color]="'accent'">
+          <mat-icon class="icon-size-5">save</mat-icon>
+          <span class="ml-2">Export</span>
+        </button>
+
+        <!-- Actions menu (visible on xs) -->
+        <div class="sm:hidden">
+          <button [matMenuTriggerFor]="actionsMenu" mat-icon-button>
+            <mat-icon>more_vert</mat-icon>
+          </button>
+          <mat-menu #actionsMenu="matMenu">
+            <button mat-menu-item>Export</button>
+            <button mat-menu-item>Settings</button>
+          </mat-menu>
+        </div>
+      </div>
+    </div>
+    <!-- Section title -->
+    <div class="w-full mt-12">
+      <div
+        class="text-2xl font-semibold tracking-tight leading-6 text-gray-500">
+        Scatter Plot
+      </div>
+      <div class="font-medium tracking-tight text-gray-500">
+        BMI vs Charge scatter plot
+      </div>
+    </div>
+    <div
+      class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 w-full mt-8">
+      <!-- BMI-Charge Scatter Plot -->
+      <div
+        class="sm:col-span-2 lg:col-span-3 dark flex flex-col flex-auto bg-slate-300 shadow rounded-2xl overflow-hidden">
+        <div
+          class="flex items-center justify-between mt-10 ml-10 mr-6 sm:mr-10">
+          <div class="flex flex-col">
+            <div
+              class="mr-4 text-2xl md:text-3xl font-semibold tracking-tight leading-7">
+              BMI vs Charge Scatter Plot
+            </div>
+          </div>
+          <div class="ml-2">
+            <mat-button-toggle-group
+              class="hidden sm:inline-flex border-none space-x-1"
+              value="this-year"
+              #visitorsYearSelector="matButtonToggleGroup">
+              <mat-button-toggle
+                class="px-1.5 rounded-full overflow-hidden border-none font-medium"
+                value="last-year"
+                >Last Year
+              </mat-button-toggle>
+              <mat-button-toggle
+                class="px-1.5 rounded-full overflow-hidden border-none font-medium"
+                value="this-year"
+                >This Year
+              </mat-button-toggle>
+            </mat-button-toggle-group>
+            <div class="sm:hidden">
+              <button mat-icon-button [matMenuTriggerFor]="visitorsMenu">
+                <mat-icon>more_vert</mat-icon>
+              </button>
+              <mat-menu #visitorsMenu="matMenu">
+                <button mat-menu-item>This Year</button>
+                <button mat-menu-item>Last Year</button>
+              </mat-menu>
+            </div>
+          </div>
+        </div>
+        <div class="flex flex-col flex-auto h-full ">
+          <app-charts
+            [chartType]="'area-chart-animated'"
+            [chartUrl]="areaCharts[3]"></app-charts>
+        </div>
+      </div>
+    </div>
+    <!-- Section title -->
+    <div class="w-full mt-12">
+      <div
+        class="text-2xl font-semibold tracking-tight leading-6 text-gray-500">
+        Count Plots
+      </div>
+      <div class="font-medium tracking-tight text-gray-500">
+        Counts
+      </div>
+    </div>
+    <div
+    class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-8 w-full mt-6 md:mt-8">
+    <!-- Age Count Plot -->
+      <div
+        class="flex flex-col flex-auto mt-8 bg-slate-100 shadow rounded-2xl overflow-hidden ">
+        <div class="flex items-start justify-between m-6 mb-0">
+          <div class="text-gray-900 font-bold tracking-tight leading-6 truncate">
+            Age countplot
+          </div>
+          <div class="ml-2">
+            <button
+              class="h-6 min-h-6 px-2 rounded-full bg-hover"
+              mat-button
+              [matMenuTriggerFor]="conversionMenu">
+              <span class="font-bold text-sm text-gray-900 xt-secondary ">30 days</span>
+            </button>
+            <mat-menu #conversionMenu="matMenu">
+              <button mat-menu-item>30 days</button>
+              <button mat-menu-item>3 months</button>
+              <button mat-menu-item>9 months</button>
+            </mat-menu>
+          </div>
+        </div>
+        <div class="flex flex-col flex-auto h-full w-full ">
+          <app-charts
+            [chartType]="'bar-chart'"
+            [chartUrl]="areaCharts[1]"></app-charts>
+        </div>
+      </div>
+      <!-- children Count Plot -->
+      <div
+        class="flex flex-col flex-auto mt-8 bg-slate-100 shadow rounded-2xl overflow-hidden ">
+        <div class="flex items-start justify-between m-6 mb-0">
+          <div class="text-gray-900 font-bold tracking-tight leading-6 truncate">
+            children countplot
+          </div>
+          <div class="ml-2">
+            <button
+              class="h-6 min-h-6 px-2 rounded-full bg-hover"
+              mat-button
+              [matMenuTriggerFor]="conversionMenu">
+              <span class="font-bold text-sm text-gray-900 xt-secondary ">30 days</span>
+            </button>
+            <mat-menu #conversionMenu="matMenu">
+              <button mat-menu-item>30 days</button>
+              <button mat-menu-item>3 months</button>
+              <button mat-menu-item>9 months</button>
+            </mat-menu>
+          </div>
+        </div>
+        <div class="flex flex-col flex-auto h-full w-full ">
+          <app-charts
+            [chartType]="'bar-chart'"
+            [chartUrl]="areaCharts[0]"></app-charts>
+        </div>
+      </div>
+    </div>
+
+    <!-- Section title -->
+    <div class="w-full mt-12">
+      <div
+        class="text-2xl font-semibold tracking-tight leading-6 text-gray-500">
+        Pie charts
+      </div>
+      <div class="font-medium tracking-tight text-gray-500">
+        Medical properties of your users
+      </div>
+    </div>
+    <div
+      class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-8 w-full mt-6 md:mt-8">
+      <!-- Male vs Female Pie chart -->
+      <div
+        class="flex flex-col flex-auto bg-card shadow rounded-2xl overflow-hidden p-6">
+        <div class="flex items-start justify-between">
+          <div
+            class="text-lg font-medium tracking-tight leading-6 truncate text-gray-500">
+            Male vs Female
+          </div>
+          <div class="ml-2">
+            <button
+              class="h-6 min-h-6 px-2 rounded-full bg-hover bg-accent"
+              mat-button
+              [matMenuTriggerFor]="conversionMenu">
+              <span class="font-medium text-sm text-primary">generate</span>
+            </button>
+            <mat-menu #conversionMenu="matMenu">
+              <button mat-menu-item>30 days</button>
+              <button mat-menu-item>3 months</button>
+              <button mat-menu-item>9 months</button>
+            </mat-menu>
+          </div>
+        </div>
+        <div class="flex flex-col flex-auto mt-6 h-full ">
+          <app-charts
+            [chartType]="'pie-chart'"
+            [chartUrl]="areaCharts[0]"></app-charts>
+        </div>
+      </div>
+      <!-- Smokers Pie Chart-->
+      <div
+        class="flex flex-col flex-auto bg-card shadow rounded-2xl overflow-hidden p-6">
+        <div class="flex items-start justify-between">
+          <div
+            class="text-lg font-medium tracking-tight leading-6 truncate text-gray-500">
+            Smoker
+          </div>
+          <div class="ml-2">
+            <button
+              class="h-6 min-h-6 px-2 rounded-full bg-slate-100"
+              mat-button
+              [color]="'primary'"
+              [matMenuTriggerFor]="conversionMenu">
+              <span class="font-medium text-sm text-secondary">generate</span>
+            </button>
+            <mat-menu #conversionMenu="matMenu">
+              <button mat-menu-item>30 days</button>
+              <button mat-menu-item>3 months</button>
+              <button mat-menu-item>9 months</button>
+            </mat-menu>
+          </div>
+        </div>
+        <div class="flex flex-col flex-auto mt-6 h-full ">
+          <app-charts
+            [chartType]="'pie-chart'"
+            [chartUrl]="areaCharts[1]"></app-charts>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
