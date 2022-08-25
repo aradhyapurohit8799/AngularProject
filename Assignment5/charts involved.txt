@@ -1,0 +1,8 @@
+# Charts Involved in EDA
+
+1. Age Countplot
+2. Male vs Female Pie chart
+3. children countplot
+4. Smoker vs Non-Smoker Pie Chart
+5. BMI vs Charges scatter plot
+

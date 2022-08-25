@@ -20,3 +20,9 @@
 ## Angular App
 1. Open the Assignment4 folder and type in the following command on your prompt (Make sure to have Backend server running and all the required libraries and framework installed):
     "ng serve"
+## Capstone
+1. Open the Angular-App folder insiden Assignment5 folder and type in the following command on your prompt (Make sure to have Backend server running and all the required libraries and framework installed):
+    "npm install"
+    "ng serve"
+
+
